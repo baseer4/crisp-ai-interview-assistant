@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "target": "es2020",
+      "sourceMap": true,
+      "outDir": "dist",
+
+    /* If transpiling with TypeScript: */
+  },
+
+  "include": ["src/**/*"],
+}
