@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
+
+
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --custom1: 'Alan Sans', sans-serif;
   --radius: 0.625rem;
   --background: oklch(20.134% 0.00159 16.495);
   --foreground: oklch(0.145 0 0);

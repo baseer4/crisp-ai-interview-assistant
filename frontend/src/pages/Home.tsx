@@ -1,88 +1,54 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { GraduationCap, LayoutDashboard } from "lucide-react";
+import Navbar from "../components/Navbar";
+import { Button } from "@/components/ui/button"; // Shadcn Button
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
-   <div className="min-h-screen w-full bg-[#f9fafb] relative">
-  <div
-    className="absolute inset-0 z-0"
-    style={{
-      backgroundImage: `
-        linear-gradient(to right, #d1d5db 1px, transparent 1px),
-        linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
-      `,
-      backgroundSize: "32px 32px",
-      WebkitMaskImage:
-        "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
-      maskImage:
-        "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
-    }}
-  />
+    <div className="min-h-screen w-full relative bg-black flex flex-col">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.25), transparent 70%), #000000",
+        }}
+      />
 
-  <div className="min-h-screen flex flex-col items-center justify-center text-black p-6 relative z-50">
-      <div className="text-center max-w-2xl mb-12">
-        <h1 className="text-4xl font-extrabold tracking-tight mb-4">
+      <div className="relative z-50 flex flex-col items-center justify-center flex-1 pb-6 text-center">
+        <Navbar />
+
+        <h1 className="font-sans text-5xl font-bold text-white mt-10 mb-6 tracking-tight">
           Crisp AI Interview Assistant
         </h1>
-        <p className="text-lg text-slate-300">
-          An AI-powered tool to simulate interviews and evaluate candidates.
-          Upload your resume, answer timed questions, and see results instantly.
+        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-12">
+          Simulate interviews, evaluate candidates, and get instant feedback. Upload your resume
+          and start your AI-powered journey.
         </p>
+
+        <div className="flex flex-col md:flex-row gap-6">
+          <Button
+           className="bg-[#5c128a]"
+            size="lg"
+            onClick={() => navigate("/resume-upload")}
+          >
+            Start Interview
+          </Button>
+
+          <Button
+          variant={"outline"}
+            className="text-green-500 " 
+            size="lg"
+            onClick={() => navigate("/interviewer")}
+          >
+            Open Dashboard
+          </Button>
+        </div>
+
+        <footer className="mt-20 text-slate-400 text-sm">
+          Swipe Internship Assignment
+        </footer>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
-        <Card
-          className="cursor-pointer hover:shadow-lg transition"
-          onClick={() => navigate("/interviewee")}
-        >
-          <CardHeader>
-            <GraduationCap className="w-10 h-10 mb-2 text-indigo-500" />
-            <CardTitle>Start Interview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-slate-600 dark:text-slate-300 mb-4">
-              Upload your resume and begin a 6-question timed interview tailored
-              for full-stack roles.
-            </p>
-            <Button className="w-full" onClick={() => navigate("/interviewee")}>
-              Go to Interview
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card
-          className="cursor-pointer hover:shadow-lg transition"
-          onClick={() => navigate("/interviewer")}
-        >
-          <CardHeader>
-            <LayoutDashboard className="w-10 h-10 mb-2 text-green-500" />
-            <CardTitle>Dashboard</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-slate-600 dark:text-slate-300 mb-4">
-              View candidates, their scores, summaries, and detailed interview
-              history.
-            </p>
-            <Button
-              variant="secondary"
-              className="w-full"
-              onClick={() => navigate("/interviewer")}
-            >
-              Open Dashboard
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-
-      <footer className="mt-16 text-slate-400 text-sm">
-     Swipe Internship Assignment
-      </footer>
     </div>
-</div>
-   
   );
 }
